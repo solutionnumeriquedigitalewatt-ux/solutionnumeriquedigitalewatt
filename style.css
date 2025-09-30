@@ -1,0 +1,139 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f7f7f7;
+  color: #222;
+}
+header {
+  background: #22223b;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+main {
+  max-width: 800px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+section.hero {
+  background: #f2e9e4;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+section.cta {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.btn {
+  background: #4a4e69;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+.btn:hover {
+  background: #22223b;
+}
+.galerie {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.galerie img {
+  width: 180px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+section.carte {
+  margin-bottom: 20px;
+}
+section.temoignages {
+  margin-bottom: 20px;
+}
+footer {
+  background: #22223b;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+input, textarea {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+button {
+  background: #4a4e69;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover {
+  background: #22223b;
+}
+@media (max-width: 900px) {
+  main {
+    max-width: 98vw;
+    padding: 10px;
+  }
+}
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  main {
+    padding: 5px;
+  }
+  section.hero, section.cta, section.carte, section.temoignages {
+    padding: 10px;
+  }
+  .galerie {
+    flex-direction: column;
+    align-items: center;
+  }
+  iframe {
+    width: 98vw !important;
+    height: 200px !important;
+  }
+}
