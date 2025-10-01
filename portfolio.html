@@ -5,6 +5,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Graphiste Freelance</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .galerie {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .galerie-img-wrap {
+      position: relative;
+      display: inline-block;
+      perspective: 600px;
+    }
+    .galerie img {
+      transition: transform 0.4s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s, filter 0.3s;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-radius: 8px;
+      display: block;
+      max-width: 220px;
+    }
+    /* Effet sepia + zoom pour toutes les images */
+    .galerie-img-wrap img:hover {
+      filter: sepia(0.8) brightness(1.1);
+      transform: scale(1.15);
+    }
+    .galerie-img-wrap:hover .galerie-overlay {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .galerie-overlay {
+      position: absolute;
+      left: 0; top: 0; right: 0; bottom: 0;
+      background: rgba(21,101,192,0.75);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+      text-align: center;
+      padding: 0 12px;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -23,10 +70,30 @@
     <section>
       <h2>Mes réalisations</h2>
       <div class="galerie">
-  <img src="solution numérique & digitale watt/1759011000554.jpg" alt="Logo entreprise 1" style="max-width:220px;border-radius:8px;margin:8px;">
-  <img src="solution numérique & digitale watt/1759011029230.jpg" alt="Logo entreprise 2" style="max-width:220px;border-radius:8px;margin:8px;">
-  <img src="solution numérique & digitale watt/1759011161790.jpg" alt="Logo entreprise 3" style="max-width:220px;border-radius:8px;margin:8px;">
-  <img src="solution numérique & digitale watt/1759013222674.jpeg" alt="Logo entreprise 4" style="max-width:220px;border-radius:8px;margin:8px;">
+    <div class="galerie-img-wrap">
+      <img src="solution numérique & digitale watt/1758994259698.jpg" alt="Logo entreprise nouveau 1">
+      <div class="galerie-overlay">Logo entreprise nouveau 1</div>
+    </div>
+    <div class="galerie-img-wrap">
+      <img src="solution numérique & digitale watt/copilot_image_1759134372843.jpeg" alt="Logo entreprise nouveau 2">
+      <div class="galerie-overlay">Logo entreprise nouveau 2</div>
+    </div>
+    <div class="galerie-img-wrap">
+      <img src="solution numérique & digitale watt/1759011000554.jpg" alt="Logo entreprise 1">
+      <div class="galerie-overlay">Logo entreprise 1</div>
+    </div>
+    <div class="galerie-img-wrap">
+      <img src="solution numérique & digitale watt/1759011029230.jpg" alt="Logo entreprise 2">
+      <div class="galerie-overlay">Logo entreprise 2</div>
+    </div>
+    <div class="galerie-img-wrap">
+      <img src="solution numérique & digitale watt/1759011161790.jpg" alt="Logo entreprise 3">
+      <div class="galerie-overlay">Logo entreprise 3</div>
+    </div>
+    <div class="galerie-img-wrap">
+      <img src="solution numérique & digitale watt/1759013222674.jpeg" alt="Logo entreprise 4">
+      <div class="galerie-overlay">Logo entreprise 4</div>
+    </div>
       </div>
       <p>
         <a href="https://wa.me/2250546769545" target="_blank" style="color:#009e49;font-weight:bold;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">
