@@ -118,6 +118,140 @@ button {
 button:hover {
   background: #ff7f00;
 }
+/* Reusable UI utility classes to replace inline styles */
+.panel {
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 0 16px;
+}
+.form-panel {
+  background: #f5f5f5;
+  padding: 24px;
+  border-radius: 10px;
+  max-width: 640px;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.tab-btn {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 8px;
+}
+.tab-btn:hover { opacity: 0.95; }
+.btn-primary {
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn-primary:hover { filter: brightness(0.95); }
+.btn-secondary {
+  background: #009e49;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.btn-secondary:hover { filter: brightness(0.95); }
+.logo-img {
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.docs-list {
+  list-style: none;
+  padding: 0;
+  margin: 12px auto 40px;
+  max-width: 640px;
+}
+.docs-list li { margin-bottom: 8px; }
+.docs-list a { color: #1976d2; font-weight: bold; text-decoration: none; }
+
+/* Utilities for common inline patterns */
+.icon-link {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  text-decoration:none;
+  font-weight:bold;
+}
+.icon-link--whatsapp { background:#25d366; color:#fff; padding:10px 18px; border-radius:6px; }
+.icon-img { width:22px; height:22px; vertical-align:middle; }
+.search-form { display:flex; max-width:420px; width:100%; align-items:center; position:relative; }
+.search-input { flex:1; padding:8px 38px 8px 38px; border-radius:6px; border:1px solid #ccc; min-width:180px; }
+.search-icon, .search-clear { position:absolute; top:50%; transform:translateY(-50%); cursor:pointer; }
+.search-icon { left:10px; }
+.search-clear { right:10px; }
+.map-iframe { border:0; border-radius:8px; }
+.blockquote-card { background:#f2e9e4; padding:16px; border-radius:8px; }
+.vertical-stack { display:flex; flex-direction:column; gap:16px; }
+
+/* Gallery styles (moved from portfolio.html) */
+.galerie {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+.galerie-img-wrap { position: relative; display: inline-block; perspective: 600px; }
+.galerie img {
+  transition: transform 0.4s cubic-bezier(.25,.8,.25,1), box-shadow 0.3s, filter 0.3s;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  display: block;
+  max-width: 220px;
+}
+.galerie-img-wrap img:hover { filter: sepia(0.8) brightness(1.1); transform: scale(1.15); }
+.galerie-overlay {
+  position: absolute; left: 0; top: 0; right: 0; bottom: 0;
+  background: rgba(21,101,192,0.75); color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; font-weight: bold; border-radius: 8px; opacity: 0; transition: opacity 0.3s; pointer-events: none; text-align: center; padding: 0 12px;
+}
+.galerie-img-wrap:hover .galerie-overlay { opacity: 1; pointer-events: auto; }
+
+/* Article card used in blog pages */
+.article-card {
+  display: none; /* default hidden, toggled by JS */
+  margin-top: 24px;
+  padding: 18px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Form field utilities */
+.field { margin: 8px 0 12px; }
+.field-input { width: 100%; box-sizing: border-box; padding: 8px; border-radius: 4px; border: 1px solid #ccc; }
+
+/* Centering utilities */
+.center-row { display:flex; justify-content:center; width:100%; }
+.center-row--spaced { display:flex; justify-content:center; width:100%; margin-bottom:18px; text-align:center; }
+.center-column { display:flex; flex-direction:column; gap:16px; }
+
+/* Service fields default hidden - JS will toggle style.display */
+.service-fields { display: none; }
+
+.accent-title { color: #1976d2; }
+.section-heading { color: #1976d2; margin-top: 28px; text-align: center; }
+.actions-row { display:flex; gap:12px; justify-content:center; margin-top:12px; }
+
+.blockquote-card span { font-weight: bold; }
+
+.icon-link--mail { margin:8px 10px; color:#22223b; }
+.icon-link--facebook { margin:8px 10px; color:#4267B2; }
 @media (max-width: 900px) {
   main {
     max-width: 98vw;
@@ -140,6 +274,4 @@ button:hover {
     align-items: center;
   }
 }
-    height: 200px !important;
-  }
-}
+
