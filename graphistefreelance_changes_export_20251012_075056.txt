@@ -1,0 +1,288 @@
+Export timestamp: 2025-10-12 07:50:56 (workspace snapshot + file contents)
+ZIP file created on Desktop: C:\Users\Utilisateur01\Desktop\graphistefreelance_export_20251012_075056.zip
+
+--- contact.html ---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact - Solution numérique & digitale WATT</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Script unique pour gérer l'affichage des champs et l'impression
+    document.addEventListener('DOMContentLoaded', function() {
+      function showFields(service) {
+        ['siteweb','ecommerce','informatique','design'].forEach(function(s){
+          var el = document.getElementById('fields-' + s);
+          if(el) el.style.display = (s === service) ? 'block' : 'none';
+        });
+      }
+      var btns = document.querySelectorAll('.tab-btn');
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() { showFields(btn.getAttribute('data-service')); });
+      });
+      showFields('siteweb');
+
+      window.imprimerFacture = function() {
+        var win = window.open('', '', 'width=800,height=900');
+        if(!win) { alert('Impossible d\'ouvrir la fenêtre d\'impression'); return; }
+        function escapeHtml(str){
+          return String(str || '').replace(/[&<>"']/g, function(m){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]); });
+        }
+        var form = document.getElementById('form-combine');
+        var rows = [];
+        Array.prototype.slice.call(form.elements).forEach(function(el){
+          if(!el.name) return;
+          var value = '';
+          if(el.type === 'checkbox' || el.type === 'radio'){
+            if(!el.checked) return; value = el.value;
+          } else if(el.tagName.toLowerCase() === 'select'){
+            value = el.options[el.selectedIndex] ? el.options[el.selectedIndex].text : el.value;
+          } else {
+            value = el.value;
+          }
+          rows.push('<tr><th style="text-align:left;padding:8px;border:1px solid #eee;">'+escapeHtml(el.name)+'</th><td style="padding:8px;border:1px solid #eee;">'+escapeHtml(value)+'</td></tr>');
+        });
+        var html = '<!doctype html><html><head><meta charset="utf-8"><title>Impression du devis</title><style>body{font-family:Arial,sans-serif;padding:24px}table{border-collapse:collapse;width:100%}th{background:#f5f5f5}</style></head><body><div style="text-align:center;margin-bottom:24px;"><h2 style="color:#1976d2;">Facture / Devis Proformat</h2></div><table>'+rows.join('')+'</table></body></html>';
+        win.document.open();
+        win.document.write(html);
+        win.document.close();
+        win.focus();
+        win.print();
+      };
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Contact - Solution numérique & digitale WATT</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="panel">
+  <div class="center-row--spaced">
+        <img src="SNDW/LOGO_SNDW.jpg" alt="Logo SNDW" class="logo-img">
+      </div>
+
+  <div class="center-row center-row--spaced">
+        <button class="tab-btn" data-service="siteweb">Site vitrine</button>
+        <button class="tab-btn" data-service="ecommerce">Ecommerce</button>
+        <button class="tab-btn" data-service="informatique">Maintenance</button>
+        <button class="tab-btn" data-service="design">Design</button>
+      </div>
+
+      <form id="form-combine" action="mailto:solutionnumeriquedigitalewatt@gmail.com" method="post" enctype="text/plain" class="form-panel">
+        <div id="fields-siteweb" class="service-fields">
+          <h3 class="accent-title">Création site web vitrine</h3>
+          <label for="pages">Nombre de pages souhaitées :</label>
+          <input type="number" id="pages" name="pages" min="1" max="50" class="field-input field">
+          <label for="fonctionnalites">Fonctionnalités spécifiques :</label>
+          <textarea id="fonctionnalites" name="fonctionnalites" rows="3" class="field-input field"></textarea>
+        </div>
+
+  <div id="fields-ecommerce" class="service-fields">
+    <h3 class="accent-title">Création site Ecommerce</h3>
+          <label for="nb-produits">Nombre de produits :</label>
+          <input type="number" id="nb-produits" name="nb-produits" min="1" class="field-input field">
+          <label for="paiement">Type de paiement :</label>
+          <input type="text" id="paiement" name="paiement" class="field-input field">
+        </div>
+
+  <div id="fields-informatique" class="service-fields">
+    <h3 class="accent-title">Dépannage et maintenance</h3>
+          <label for="type-panne">Type de panne :</label>
+          <input type="text" id="type-panne" name="type-panne" class="field-input field">
+        </div>
+
+  <div id="fields-design" class="service-fields">
+    <h3 class="accent-title">Design graphique</h3>
+          <label for="type-support">Type de support :</label>
+          <input type="text" id="type-support" name="type-support" class="field-input field">
+        </div>
+
+        <label for="nom">Nom :</label>
+  <input type="text" id="nom" name="nom" required class="field-input field">
+
+        <label for="email">Email :</label>
+  <input type="email" id="email" name="email" required class="field-input field"> 
+
+        <label for="tel">Téléphone :</label>
+  <input type="tel" id="tel" name="tel" class="field-input field">
+
+        <label for="message">Message :</label>
+  <textarea id="message" name="message" rows="4" class="field-input field"></textarea>
+
+  <div class="actions-row">
+          <button type="button" onclick="imprimerFacture()" class="btn-secondary">Imprimer le devis</button>
+          <button type="submit" class="btn-primary">Envoyer</button>
+        </div>
+
+      </form>
+
+  <h2 class="section-heading">Documents utiles</h2>
+      <ul class="docs-list">
+        <li><a href="SNDW/CAHIER DE CHARGE _SITE_SNDW.docx" download>CAHIER DE CHARGE _SITE_SNDW</a></li>
+        <li><a href="SNDW/DEVIS PROFORMA ANNEXE CAHIER DE CHARGE_SNDW.docx" download>DEVIS PROFORMA ANNEXE CAHIER DE CHARGE_SNDW</a></li>
+        <li><a href="SNDW/DEVIS PROFORMA CAMPAGNE PUBLICITAIRE _SNDW.docx" download>DEVIS PROFORMA CAMPAGNE PUBLICITAIRE _SNDW</a></li>
+        <li><a href="SNDW/DEVIS PROFORMA IDENTITÉ VISUELLE _SNDW.docx" download>DEVIS PROFORMA IDENTITÉ VISUELLE _SNDW</a></li>
+      </ul>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Solution numérique & digitale WATT</p>
+  </footer>
+
+</body>
+</html>
+
+--- index.html ---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solution numérique & digitale WATT</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+  <h1>Solution numérique & digitale WATT</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    <section class="hero">
+      <h2>Consulting & Création d'identité visuelle</h2>
+      <p>Je vous accompagne dans la création de votre image de marque: logos, chartes graphiques, supports de communication</p>
+      <p>À la recherche de nouveaux projets et collaborations!</p>
+    </section>
+    <section class="cta">
+  <a href="contact.html" class="btn">Discutons de votre projet</a>
+  <br><br>
+  <a href="https://wa.me/2250546769545" target="_blank" rel="noopener noreferrer" class="icon-link icon-link--whatsapp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="icon-img">
+    <span>+225 0546769545</span>
+  </a>
+  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=solutionnumeriquedigitalewatt@gmail.com" target="_blank" rel="noopener noreferrer" class="icon-link icon-link--mail">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="E-mail" class="icon-img">
+    <span>solutionnumeriquedigitalewatt@gmail.com</span>
+  </a>
+  <a href="https://www.facebook.com/Solutionnumeriqueetdigitalewatt" target="_blank" rel="noopener noreferrer" class="icon-link icon-link--facebook">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook" class="icon-img">
+    <span>Solution numerique & digitale watt</span>
+  </a>
+    </section>
+    <section class="carte">
+      <h3>Où me trouver ?</h3>
+  <div class="center-row--spaced">
+        <form onsubmit="event.preventDefault();window.open('https://www.google.com/maps/search/'+encodeURIComponent(document.getElementById('search-location').value),'_blank');" class="search-form">
+          <input type="text" id="search-location" placeholder="Rechercher une adresse ou un lieu..." class="search-input">
+          <span class="search-icon" onclick="window.open('https://www.google.com/maps/search/'+encodeURIComponent(document.getElementById('search-location').value),'_blank');">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Magnifying_glass_icon.svg" alt="Rechercher" class="icon-img">
+          </span>
+          <span class="search-clear" onclick="document.getElementById('search-location').value='';document.getElementById('search-location').focus();">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Cross_icon.svg" alt="" class="icon-img">
+          </span>
+        </form>
+      </div>
+  <div class="center-row">
+        <iframe src="https://www.google.com/maps?q=Abidjan,+Côte+d'Ivoire&output=embed" width="400" height="300" class="map-iframe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+    <section class="temoignages">
+      <h3>Témoignages de clients</h3>
+      <div class="vertical-stack">
+  <blockquote class="blockquote-card">« Un professionnel à l’écoute, créatif et réactif. Mon logo est parfait !»<br><span>— Fatou B.</span></blockquote>
+  <blockquote class="blockquote-card">« Super accompagnement pour la refonte de notre identité visuelle. Je recommande !»<br><span>— Koffi D.</span></blockquote>
+  <blockquote class="blockquote-card">« Très satisfait du design de mes supports de communication. Merci !»<br><span>— Awa S.</span></blockquote>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Graphiste-Designer Freelance. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
+
+--- style.css ---
+[content omitted in this export file for brevity]
+(Full `style.css` is present in the workspace and was added to the ZIP.)
+
+--- portfolio.html ---
+[content omitted in this export file for brevity]
+(Full `portfolio.html` is present in the workspace and was added to the ZIP.)
+
+--- blog.html ---
+[content omitted in this export file for brevity]
+(Full `blog.html` is present in the workspace and was added to the ZIP.)
+
+--- init-and-commit.ps1 ---
+# Init and commit script for graphistefreelance
+# Usage: Open PowerShell and run this script after installing Git
+
+$repo = Split-Path -Parent $MyInvocation.MyCommand.Definition
+Write-Output "Running in: $repo"
+
+# Check git availability
+try {
+    git --version | Out-Null
+} catch {
+    Write-Error "Git not found. Please install Git for Windows from https://git-scm.com/download/win and re-run this script."
+    exit 1
+}
+
+# Initialize repository if not already
+if (-not (Test-Path (Join-Path $repo ".git"))) {
+    git -C $repo init
+    Write-Output "Initialized new git repo in $repo"
+} else {
+    Write-Output "Git repo already initialized"
+}
+
+# Set local user config if missing
+$hasName = git -C $repo config user.name
+if (-not $hasName) {
+    $name = Read-Host "Enter git user.name to set locally (e.g. Your Name)"
+    if ($name) { git -C $repo config user.name "$name" }
+}
+$hasEmail = git -C $repo config user.email
+if (-not $hasEmail) {
+    $email = Read-Host "Enter git user.email to set locally (e.g. you@example.com)"
+    if ($email) { git -C $repo config user.email "$email" }
+}
+
+# Add and commit
+git -C $repo add -A
+$defaultMessage = "Normalize styles: move inline styles to CSS, clean HTML, add utility classes"
+$message = Read-Host "Commit message (leave empty for default)"
+if (-not $message) { $message = $defaultMessage }
+
+# Commit (if there are changes)
+$changes = git -C $repo status --porcelain
+if ($changes) {
+    git -C $repo commit -m "$message"
+    Write-Output "Committed changes with message: $message"
+    git -C $repo --no-pager log -n 5 --oneline
+} else {
+    Write-Output "No changes to commit"
+}
+
+
+End of export.

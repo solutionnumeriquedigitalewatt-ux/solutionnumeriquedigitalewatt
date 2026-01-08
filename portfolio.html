@@ -51,16 +51,53 @@
       text-align: center;
       padding: 0 12px;
     }
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.9);
+    }
+    .lightbox-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .lightbox-close:hover,
+    .lightbox-close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Portfolio</h1>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="services.html">Services Digitaux</a></li>
+        <li><a href="services-nettoyage.html">Services Nettoyage</a></li>
         <li><a href="apropos.html">À propos</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -95,6 +132,10 @@
       <div class="galerie-overlay">Logo entreprise 4</div>
     </div>
       </div>
+      <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+      </div>
       <p>
         <a href="https://wa.me/2250546769545" target="_blank" class="icon-link icon-link--whatsapp">
           Découvrez plus de créations en me contactant !
@@ -105,7 +146,26 @@
     </section>
   </main>
   <footer>
-    <p>&copy; 2025 Graphiste-Designer Freelance. Tous droits réservés.</p>
+    <p>&copy; 2025 SNDW - Solution numérique & digitale WATT & Nettoie Tout Service. Tous droits réservés.</p>
   </footer>
+  <script>
+    var modal = document.getElementById('lightbox');
+    var modalImg = document.getElementById('lightbox-img');
+    var closeBtn = document.getElementsByClassName('lightbox-close')[0];
+    document.querySelectorAll('.galerie img').forEach(img => {
+      img.onclick = function(){
+        modal.style.display = "block";
+        modalImg.src = this.src;
+      }
+    });
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      var btn = document.querySelector('.theme-toggle');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    }
+  </script>
 </body>
 </html>

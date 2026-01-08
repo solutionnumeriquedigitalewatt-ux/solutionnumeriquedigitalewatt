@@ -3,25 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solution numérique & digitale WATT</title>
+  <title>SNDW - Solution numérique & digitale WATT & Nettoie Tout Service</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-  <h1>Solution numérique & digitale WATT</h1>
+  <h1>SNDW - Solution numérique & digitale WATT & Nettoie Tout Service</h1>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="services.html">Services Digitaux</a></li>
+        <li><a href="services-nettoyage.html">Services Nettoyage</a></li>
         <li><a href="apropos.html">À propos</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="blog.html">Blog</a></li>
       </ul>
     <section class="hero">
-      <h2>Consulting & Création d'identité visuelle</h2>
+      <h2>Consulting & Création d'identité visuelle / Services de Nettoyage</h2>
       <p>Je vous accompagne dans la création de votre image de marque : logos, chartes graphiques, supports de communication…</p>
       <p>À la recherche de nouveaux projets et collaborations !</p>
+      <p>Nous offrons également des services de nettoyage professionnels pour particuliers et entreprises.</p>
     </section>
     <section class="cta">
   <a href="contact.html" class="btn">Discutons de votre projet</a>
@@ -66,7 +69,14 @@
     </section>
   </main>
   <footer>
-    <p>&copy; 2025 Graphiste-Designer Freelance. Tous droits réservés.</p>
+    <p>&copy; 2025 SNDW - Solution numérique & digitale WATT & Nettoie Tout Service. Tous droits réservés.</p>
   </footer>
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      var btn = document.querySelector('.theme-toggle');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    }
+  </script>
 </body>
 </html>

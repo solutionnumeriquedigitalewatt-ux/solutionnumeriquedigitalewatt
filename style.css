@@ -17,6 +17,7 @@ header {
   color: #222;
   padding: 20px 0;
   text-align: center;
+  position: relative;
 }
 nav ul {
   list-style: none;
@@ -274,4 +275,37 @@ button:hover {
     align-items: center;
   }
 }
-
+body.dark {
+  background: #222;
+  color: #fff;
+}
+body.dark header {
+  background: linear-gradient(90deg, #ff7f00 0%, #333 50%, #009e49 100%);
+}
+body.dark main {
+  background: #333;
+}
+body.dark nav a {
+  color: #ff7f00;
+  background: #333;
+  border-color: #009e49;
+}
+body.dark nav a:hover {
+  background: #009e49;
+}
+body.dark footer {
+  background: #333;
+}
+.theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #222;
+}
+body.dark .theme-toggle {
+  color: #fff;
+}

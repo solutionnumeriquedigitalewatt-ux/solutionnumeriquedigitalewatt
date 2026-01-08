@@ -48,16 +48,47 @@
         win.print();
       };
     });
+    function validateForm() {
+      var nom = document.getElementById('nom').value;
+      var email = document.getElementById('email').value;
+      var tel = document.getElementById('tel').value;
+      var message = document.getElementById('message').value;
+      if (nom == "") {
+        alert("Veuillez entrer votre nom.");
+        return false;
+      }
+      if (email == "") {
+        alert("Veuillez entrer votre email.");
+        return false;
+      }
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert("Veuillez entrer un email valide.");
+        return false;
+      }
+      if (message == "") {
+        alert("Veuillez entrer un message.");
+        return false;
+      }
+      return true;
+    }
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      var btn = document.querySelector('.theme-toggle');
+      btn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    }
   </script>
 </head>
 <body>
   <header>
     <h1>Contact - Solution numérique & digitale WATT</h1>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
     <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="portfolio.html">Portfolio</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="services.html">Services Digitaux</a></li>
+        <li><a href="services-nettoyage.html">Services Nettoyage</a></li>
         <li><a href="apropos.html">À propos</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -77,7 +108,7 @@
         <button class="tab-btn" data-service="design">Design</button>
       </div>
 
-      <form id="form-combine" action="mailto:solutionnumeriquedigitalewatt@gmail.com" method="post" enctype="text/plain" class="form-panel">
+      <form id="form-combine" action="mailto:solutionnumeriquedigitalewatt@gmail.com" method="post" enctype="text/plain" class="form-panel" onsubmit="return validateForm()">
         <div id="fields-siteweb" class="service-fields">
           <h3 class="accent-title">Création site web vitrine</h3>
           <label for="pages">Nombre de pages souhaitées :</label>
@@ -105,6 +136,12 @@
           <label for="type-support">Type de support :</label>
           <input type="text" id="type-support" name="type-support" class="field-input field">
         </div>
+
+        <label for="service">Type de service :</label>
+  <select id="service" name="service" class="field-input field">
+    <option value="digital">Services Digitaux (Design, Web)</option>
+    <option value="nettoyage">Services de Nettoyage</option>
+  </select>
 
         <label for="nom">Nom :</label>
   <input type="text" id="nom" name="nom" required class="field-input field">
